@@ -4,6 +4,7 @@ using namespace std;
 void printAvg(int array[], int counter);
 void findValue(int array[], int counter);
 void findSmall(int (&array)[10], int counter);
+void selectionSort(int (&array)[10], int counter);
 
 int main()
 {
@@ -55,6 +56,7 @@ int main()
 	printAvg(Table, counter);
 	findValue(Table, counter);
 	findSmall(Table, counter);
+	selectionSort(Table, counter);
 
 	return 0;
 }
@@ -176,4 +178,37 @@ void findSmall(int(&array)[10], int counter)
 	}
 
 	cout << endl << endl;
+}
+
+void selectionSort(int(&array)[10], int counter)
+{
+	int smallest = array[0];
+	int placeHolder = 0;
+
+	for (int k = 0; k < counter - 1; k++)
+	{
+		smallest = k;
+		for (int i = k + 1; i < counter; i++)
+		{
+
+			if (array[i] < array[smallest])
+			{
+				smallest = i;
+			}
+		}
+		placeHolder = array[smallest];
+		array[smallest] = array[k];
+		array[k] = placeHolder;
+	}
+
+	cout << "This is the array fully sorted: ";
+
+	for (int k = 0; k < counter; k++)
+	{
+		cout << array[k] << " ";
+	}
+
+	cout << endl << endl;
+
+
 }
